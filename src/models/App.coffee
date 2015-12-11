@@ -5,9 +5,20 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
+    # event handlers
     @get 'playerHand'
-      .on('playerBust', ->
-        console.log('player lost!')
+      .on('gameEnded', =>
+        # We know the player lost
+        alert 'player lost'
+        @initialize()
+        return
+      )
+    @get 'dealerHand'
+      .on('gameEnded',=>
+        # We know the dealer lost
+        alert 'dealer lost'
+        @initialize()
+        return
       )
     return
 
