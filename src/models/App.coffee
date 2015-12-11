@@ -10,15 +10,20 @@ class window.App extends Backbone.Model
       .on('gameEnded', =>
         # We know the player lost
         alert 'player lost'
-        @initialize()
+        # @initialize()
         return
       )
     @get 'dealerHand'
       .on('gameEnded',=>
         # We know the dealer lost
         alert 'dealer lost'
-        @initialize()
+        # @initialize()
         return
+      )
+
+    @get 'playerHand'
+      .on('stand', =>
+        
       )
     return
 

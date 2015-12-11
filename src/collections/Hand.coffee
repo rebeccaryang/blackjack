@@ -22,10 +22,19 @@ class window.Hand extends Backbone.Collection
     # when there is an ace, it offers you two scores - the original score, and score + 10.
     [@minScore(), @minScore() + 10 * @hasAce()]
 
+  bestScore: -> 
+    if @scores().length > 1 and @scores()[1] <= 21
+      @scores()[1]
+    else 
+      @scores()[0]
+
   gameEnded: ->
     # `
     @trigger('gameEnded')
     # `
     # if min score > 21 -- trigger 
+
+  stand: ->
+    @trigger('stand')
 
 
