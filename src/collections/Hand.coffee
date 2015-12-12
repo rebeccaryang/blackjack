@@ -30,12 +30,12 @@ class window.Hand extends Backbone.Collection
 
   bust: ->
     # `
-    @trigger('bust')
+    @trigger 'bust'
     # `
     # if min score > 21 -- trigger 
 
   stand: ->
-    @trigger('stand')
+    @trigger 'stand'
 
   finishHand: ->
     @hit() while @bestScore() < 17

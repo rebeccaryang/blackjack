@@ -47,7 +47,8 @@ class window.App extends Backbone.Model
     @get 'dealerHand'
       .finishHand()
     if not busted
-      @compare()
+      # @compare()
+      @gameEnded @compare()
 
   compare: ->
     dealer = @get ('dealerHand')
@@ -55,9 +56,9 @@ class window.App extends Backbone.Model
     ewe = @get('playerHand')
       .bestScore()
     if dealer >= ewe
-      @gameEnded('Dealer')
+      return 'Dealer'
     else
-      @gameEnded('Ewe')
+      return 'Ewe'
 
 
 
