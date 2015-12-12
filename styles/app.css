@@ -15,18 +15,20 @@ html, body
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
-}
-
-
-.card img {
-  width: 100%;
-  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
 }
 
 .covered {
   background-image: url('../img/card-back.png');
 }
 
+/*.card img {
+  width: 100%;
+  height: 100%;
+}
+*/
 .hand {
   overflow: auto;
 }
