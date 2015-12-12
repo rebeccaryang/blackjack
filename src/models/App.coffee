@@ -7,23 +7,56 @@ class window.App extends Backbone.Model
     @set 'dealerHand', deck.dealDealer()
     # event handlers
     @get 'playerHand'
-      .on('gameEnded', =>
+      .on('bust', =>
         # We know the player lost
-        alert 'player lost'
+        @gameEnded("Dealer")
         # @initialize()
         return
       )
     @get 'dealerHand'
-      .on('gameEnded',=>
+      .on('bust',=>
         # We know the dealer lost
-        alert 'dealer lost'
+        @gameEnded('Ewe')
         # @initialize()
         return
       )
 
     @get 'playerHand'
       .on('stand', =>
-        
+        @playerStands()
       )
+
     return
+  gameEnded: (winner)->
+    alert "#{ winner } won!"
+    @initialize()
+
+  playerStands: ->
+    busted = false
+    @get 'dealerHand'
+      .on('bust',->
+        busted = true
+        return
+    )
+    @get 'dealerHand'
+      .at(0).flip()
+    @get 'dealerHand'
+      .finishHand()
+    if not busted
+      @compare()
+
+  compare: ->
+    dealer = @get ('dealerHand')
+      .bestScore()
+    ewe = @get('playerHand')
+      .bestScore()
+    if dealer >= ewe
+      @gameEnded('Dealer')
+    else
+      @gameEnded('Ewe')
+
+
+
+
+
 

@@ -5,7 +5,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     @add(@deck.pop())
-    if @minScore() > 21 then @gameEnded()
+    if @minScore() > 21 then @bust()
     @last()
 
   hasAce: -> @reduce (memo, card) ->
@@ -28,13 +28,18 @@ class window.Hand extends Backbone.Collection
     else 
       @scores()[0]
 
-  gameEnded: ->
+  bust: ->
     # `
-    @trigger('gameEnded')
+    @trigger('bust')
     # `
     # if min score > 21 -- trigger 
 
   stand: ->
     @trigger('stand')
+
+  finishHand: ->
+    @hit() while @bestScore() < 17
+
+
 
 

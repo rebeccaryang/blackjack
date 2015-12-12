@@ -15,7 +15,6 @@ class window.AppView extends Backbone.View
     #   alert ''
     @model.on('change', =>
       @render()
-      console.log 'listened'
       )
     return
 
