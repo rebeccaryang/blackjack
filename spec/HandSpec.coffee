@@ -1,4 +1,5 @@
 assert = chai.assert
+expect = chai.expect
 
 describe "hand constructor", ->
 
@@ -12,4 +13,27 @@ describe "hand constructor", ->
     hand = deck.dealPlayer()
     hand.hit()
     assert.strictEqual hand.length, 3
-  return
+    return
+
+  it "should bust on bust", ->
+    bustSpy = sinon.spy Hand.prototype, 'bust'
+    deck = new Deck()
+    hand = deck.dealPlayer()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    hand.hit()
+    expect bustSpy
+      .to.have.been.called
+    Hand.prototype.bust.restore()
+    return;
+
