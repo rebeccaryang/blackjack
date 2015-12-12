@@ -50,6 +50,8 @@ class window.AppView extends Backbone.View
     return
 
   eweWon: ->
+    $('.ewewon-container').css('display','block')
 
   dealerWon: ->
+    $('.dealerwon-container').css('display','block')
 

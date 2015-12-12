@@ -1,7 +1,7 @@
 # TODO: Refactor this model to use an internal Game Model instead
 # of containing the game logic directly.
 class window.App extends Backbone.Model
-  initialize: ->
+  initialize: =>
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
@@ -27,11 +27,11 @@ class window.App extends Backbone.Model
       )
 
     return
-  gameEnded: (winner)->
+  gameEnded: (winner)=>
     # alert "#{ winner } won!"
-    trigger(winner+'won')
+    @trigger(winner+'won')
     that = @
-    setTimeout that.initialize(),10000
+    setTimeout that.initialize,3000
     return
 
   playerStands: ->
