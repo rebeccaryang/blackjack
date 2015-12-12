@@ -28,8 +28,11 @@ class window.App extends Backbone.Model
 
     return
   gameEnded: (winner)->
-    alert "#{ winner } won!"
-    @initialize()
+    # alert "#{ winner } won!"
+    trigger(winner+'won')
+    that = @
+    setTimeout that.initialize(),10000
+    return
 
   playerStands: ->
     busted = false
