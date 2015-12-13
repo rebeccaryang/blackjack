@@ -1,4 +1,4 @@
-html, body, button {
+html, body, button, input {
   font-family: Arimo, sans-serif;
 }
 
@@ -46,6 +46,10 @@ button {
   border: 0px;
   border-radius: 7px;
   padding: 5px 7px 5px 7px;
+}
+
+input {
+  font-size: 16px;
 }
 
 .ewewon-container, .dealerwon-container {
