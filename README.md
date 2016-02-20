@@ -1,3 +1,3 @@
 # Blackjack
 ## Summary 
-> This is a lightweight Blackjack game built in Backbone.js
+> This is a lightweight Blackjack game built in Backbone.js and CoffeeScript
